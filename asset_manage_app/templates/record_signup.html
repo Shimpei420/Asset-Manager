@@ -1,0 +1,12 @@
+{% block content %}
+ <h1>Add your account</h1>
+ <form action = "{% url 'record_signup' %}" method = "POST">
+  {% csrf_token %}
+  <ul>
+    <li><p>UserName : </p>{{form.username}}</li>
+    <li><p>Password : </p>{{form.password1}}</li>
+    <li><p>Password (Confirm): </p>{{form.password2}}</li>
+    <li><input type = "submit" value = "Sign Up"></li>
+  </ul>  
+ </form>
+{% endblock %}

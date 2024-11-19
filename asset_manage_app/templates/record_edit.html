@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+<a href = "{% url 'record_list'%}">Record_Edit</a>{% endblock %}
+{% block content%}
+    <div class = "edit_content">
+     <form action = "{% url 'record_edit' record.id %}" method = "POST">
+      {%csrf_token%}
+      <ul class = "edit_form">
+        <li class = "edit_form_date"><span class = "edit_title">Date : </span>{{forms.date}}</li>
+        <li class = "edit_form_category"><span class = "edit_title">Category : </span>{{forms.category}}</li>
+        <li class = "edit_form_description"><span class = "edit_title">Description : </span>{{forms.description}}</li>
+        <li class = "edit_form_amount"><span class = "edit_title">Amount : </span>{{forms.amount}}</li>
+        <li class = "edit_form_input"><input type = "submit" value = "Save" class = "edit_button"></li>
+      </ul>
+     </form>
+     <a type = "button" class = "delete_button" data-bs-toggle = "modal" 
+      data-bs-target = "#delete-Modal-{{ record.id }}">Delete</a>
+     {% include "./delete_confirmation.html" %}
+    </div>
+{% endblock %}

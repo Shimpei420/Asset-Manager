@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}
+ <a href = "{% url 'record_list' %}">Record List</a>
+{% endblock %}
+{% block content%}
+    <form action = "{% url 'record_add' %}" method = "POST">
+        {%csrf_token%}
+        <ul class = "record_form">
+          <li class = "form_date">Date : {{forms.date}}</li>
+          <li class = "form_category">Category : {{forms.category}}</li>
+          <li class = "form_description">Description : {{forms.description}}</li>
+          <li class = "form_amount">Amount : {{forms.amount}}</li>
+          <li class = "form_input"><input type = "submit" value = "Add Record" class = "add_button"></li>
+        </ul>
+    </form>
+
+    
+    <div class = "current_record_content">
+     <h1 class = "current_month_title">----Record----</h1>
+     <h3 class = "number_for_month">Total Amount in {{current_month}}: USD $ {{current_total_month_amount}}</h3>
+    <div class = "current_month_records"> 
+     <table class = "records_table">
+       <tr>
+        <th class = "record_table_title">Date</th>
+        <th class = "record_table_title">Category</th>
+        <th class = "record_table_title">Description</th>
+        <th class = "record_table_title">Amount</th>
+        <th></th>
+       </tr>
+      {% for record in current_month_records %}
+       <tr>
+        <th>{{record.date}}</th>
+        <th>{{record.category}}</th>
+        <th>{{record.description}}</th>
+        <th>USD ${{record.amount}}</th>
+        <th><a href = "{% url 'record_edit' record.id %}">Edit</a></th>
+       </tr>
+      {% endfor%}
+    </table>
+      <div class = "current_month_paginator">
+        {% if current_month_records.has_previous %}
+         <a href = "?page={{current_month_records.previous_page_number}}" 
+          class = "previous_arrow"><<</a>
+        {% else %}
+          <span class = "previous_arrow"><<</span>
+        {% endif %}
+        {% for page in total_page %}
+          {% if page == current_month_records.number %}
+           <span class = "current_page">{{current_month_records.number}}</span>
+          {% else %}
+           <a href = "?page={{page}}">{{page}}</a>
+          {% endif %}
+        {% endfor %}
+        {% if current_month_records.has_next %}
+         <a href = "?page={{current_month_records.next_page_number}}"
+          class = "next_arrow">>></a>
+        {% else %}
+          <span class = "next_arrow">>></span>
+        {% endif %}
+        </div>
+      </div>
+      <div class = "current_month_graphs">
+       <div class = "current_month_pie_graph"><img src="data:image/png;base64,{{ current_pie_chart| safe }}"></div>
+       <div class = "current_month_bar_graph"><img src="data:image/png;base64,{{ current_bar_chart| safe }}"></div>
+      </div>
+      </div>
+    <div class = "search_content">
+      <h1 class = "search_title">----Search----</h1>
+      <div class = "search_condition_box">
+        <form method = "GET" class = "search_form">
+         <div class = "year_box">
+          <p class = "year_title">Year :</p>
+          <select name = "Year" class = "year_select">
+           {% for year in year_list %}
+            <option hidden></option>
+            <option>{{year}}</option>
+           {% endfor %}
+          </select>
+         </div>
+         <div class = "month_box">
+          <p class = "month_title">Month :</p>
+          <select name = "Month" class = "month_select">
+           {% for month in month_list %}
+            <option hidden></option>
+            <option>{{month}}</option>
+           {% endfor %}
+          </select>
+         </div>
+         <div class = "category_box">
+          <p class = "category_title">Category :</p>
+          <select name = "Category" class = "category_select">
+           {% for category in category_list %}
+           <option hidden></option>
+            <option>{{category}}</option>
+           {% endfor %}
+          </select>
+         </div>
+         <input type = "submit" value = "Show Data" class = "search_button">
+        </form>
+        </div>
+      <div class = "graph_content">
+        {% if search %}
+         <div class = "search_left_content">
+          {% include "record_search.html" %}
+         </div>
+         {% if pie_chart_for_search %}
+          <div class = "search_right_content">
+           <img src="data:image/png;base64,{{ pie_chart_for_search| safe }}">
+          </div>
+         {% else %}
+          <div></div>
+         {% endif %}
+        {% else %}
+         <p class = "no_record_message">No Records</p>
+        {% endif %}
+       </div>
+    </div>
+    
+{% endblock %}

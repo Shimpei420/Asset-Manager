@@ -1,0 +1,363 @@
+body {
+    font-family: 'Times New Roman', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+  }
+
+
+a{
+    text-decoration: none;
+    font: Times;
+    color: black;
+}
+
+a:link, a:hover, a:active, a:visited{
+    color: black;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top_title{
+    display: inline-block;
+}
+
+.signout_button{
+    display: inline-block;
+}
+
+/* form */
+.record_form{
+    height: 40px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_description{
+    height: 30px;
+}
+
+.record_form select, .record_form input{
+    height: 20px;
+    width: 100px;
+    padding: 0;
+}
+
+textarea{
+    height: 20px;
+    width: 300px;
+    padding: 0;
+    vertical-align: middle;
+    resize: none;
+}
+
+input.add_button{
+    display: block;
+    width: 100px;
+    height: 25px;
+    font-size: 15px;
+    border-radius: 5px;
+
+}
+/* form */
+
+/* Current Month Record */
+
+.current_month_records{
+    border-bottom: solid 5px black;
+}
+
+.current_record_content{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.current_month_title{
+    font-size: 30px;
+    text-align: center;
+}
+
+.number_for_month{
+    text-decoration: underline;
+}
+
+.records_table{
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 5px 5px;
+    margin: 0 auto;
+}
+
+.record_table_title{
+    text-decoration: underline;
+}
+
+.current_month_paginator{
+    font-size: 20px;
+    margin: 5px 0;
+    text-align: center;
+    color: blue;
+}
+
+.current_month_paginator span{
+    color: black;
+}
+
+.previous_arrow{
+    margin-right: 10px;
+}
+
+.current_page{
+    color: blue;
+}
+
+.next_arrow{
+    margin-left: 10px;
+}
+
+/* Current Month Record */
+
+/* Current Month Graph */
+.current_month_graphs{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    border-bottom: solid 5px black;
+}
+
+.current_month_pie_graph{
+    height: 400px;
+    width: 40%;
+}
+
+.current_month_bar_graph{
+    height: 400px;
+    width: 60%;
+}
+
+.current_month_graphs img{
+    height: 100%;
+    width: 100%;
+}
+
+/* Current Month Graph */
+
+/* Search */
+
+.search_content{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.search_title{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.search_condition_box{
+    vertical-align: middle;
+}
+
+.search_form{
+    width: 75%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.year_box, .month_box, .category_box{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.year_title, .month_title, .category_title{
+    width: 80px;
+    display: inline-block;
+    margin: 0;
+}
+
+.year_select, .month_select, .category_select{
+    height: 20px;
+    width: 100px;
+}
+
+input.search_button{
+    display: block;
+    width: 100px;
+    height: 25px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.graph_content{
+   display: flex;
+   margin-top: 20px;
+}
+
+.search_left_content{
+    width: 50%;
+    align-items: center;
+}
+
+.search_total{
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.records_table_search{
+    width: 100%;
+    margin: 0;
+}
+
+.search_right_content{
+    width: 50%;
+    text-align: center;
+}
+
+.no_record_message{
+    display: inline-block;
+    text-align: center;
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+.search_paginator{
+    font-size: 15px;
+    margin: 5px 0;
+    text-align: center;
+    color: blue;
+}
+
+/* Sign in */
+
+.signin_title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.signin_content{
+    height: 300px;
+    width: 50%;
+    margin: 0 auto;
+    border: 5px solid black;
+}
+
+.signin_list{
+    list-style: none;
+}
+
+.signin_box{
+    height: 35px;
+    width: 100%;
+    font-size: 40px;
+    align-items: end;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.sign_item{
+    height: 100%;
+    width: 200px;
+    font-size: 35px;
+    margin: 0;
+    margin-right: 15px;
+}
+
+#id_username, #id_password{
+    height: 25px;
+    width: 300px;
+    font-size: 50%;
+}
+
+.signin_button_box{
+    display: flex;
+    height: 35px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 20px 0;
+}
+
+.signin_button{
+    width: 30%;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+/* Edit */
+.edit_content{
+    width: 50%;
+    border: solid 5px black;
+    margin: 0 auto;
+}
+
+.edit_form{
+    display: block;
+    width: 80%;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.edit_form_date, .edit_form_category,
+.edit_form_description, .edit_form_amount{
+    display: inline-block;
+    width: 100%;
+    margin: 10px auto;
+}
+
+#id_description{
+    width: 350px;
+}
+
+#id_amount{
+    width: 60px;
+}
+
+.edit_title{
+    display: inline-block;
+    width: 100px;
+}
+
+.edit_button{
+    display: block;
+    width: 75px;
+    height: 25px;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px auto 10px;
+}
+
+.delete_button{
+    display: block;
+    width: 75px;
+    height: 25px;
+    font-size: 15px;
+    color: black;
+    background-color: #efefef;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 20px auto 10px;
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
+
+/* Footer */
+.footer_string{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 0;
+}

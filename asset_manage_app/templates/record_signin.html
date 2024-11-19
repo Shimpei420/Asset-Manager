@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = "signin_content">
+ <h1 class = "signin_title">Sign In</h1>
+ <form action = "{% url 'record_signin' %}" method = "POST">
+  {% csrf_token %}
+  <ul class = "signin_list">
+    <li class = "signin_box"><p class = "sign_item">User Name : </p>{{form.username}}</li>
+    <li class = "signin_box"><p class = "sign_item">Password : </p>{{form.password}}</li>
+    <li class = "signin_button_box"><input type = "submit" value = "Sign In" class = "signin_button"></li>
+  </ul>  
+ </form>
+</div>
+{% endblock %}

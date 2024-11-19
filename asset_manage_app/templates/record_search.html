@@ -1,0 +1,47 @@
+
+ {% if selected_category and selected_month %}
+  <p class = "search_total">Total Amount in {{selected_category}} on {{selected_month}}, {{selected_year}} : {{total_month_amount}}</p>
+ {% elif not selected_month and selected_category %}
+  <p class = "search_total">Total Amount in {{selected_category}} {{selected_year}} : USD ${{search_result_amount}}</p>
+ {% else %}
+  <p class = "search_total">Total Amount on {{selected_month}} {{selected_year}} : USD ${{search_result_amount}}</p>
+ {% endif %}
+ <table class = "records_table_search">
+    <tr>
+     <th class = "record_table_title">Date</th>
+     <th class = "record_table_title">Category</th>
+     <th class = "record_table_title">Description</th>
+     <th class = "record_table_title">Amount</th>
+     <th class = "record_table_title">Edit</th>
+    </tr>
+   {% for record in records %}
+    <tr>
+     <th>{{record.date}}</th>
+     <th>{{record.category}}</th>
+     <th>{{record.description}}</th>
+     <th>USD ${{record.amount}}</th>
+     <th><a href = "{% url 'record_edit' record.id %}">Edit</a></th>
+    </tr>
+   {% endfor%}
+ </table>
+ <div class = "search_paginator">
+  {% if records.has_precious %}
+   <a href = "?{{search_params}}&search_page={{records.previous_page_number}}" 
+      class = "previous_arrow"><<</a>
+  {% else %}
+   <span class = "previous_arrow"><<</span>
+  {% endif %}
+  {% for page in search_total_page %}
+   {% if page == records.number %}
+    <span class = "current_page">{{records.number}}</span>
+   {% else %}
+    <a href = "?{{search_params}}&search_page={{page}}">{{page}}</a>
+   {% endif %}
+  {% endfor %}
+  {% if records.has_next %}
+   <a href = "?{{search_params}}&search_page={{records.next_page_number}}"
+    class = "next_arrow">>></a>
+  {% else %}
+   <span class = "next_arrow">>></span>
+  {% endif %}
+</div>
